@@ -15,6 +15,11 @@ export default function App() {
         <input type="search" placeholder='nome ou número' className='input_pesquisa' id='input' required/>
       </form>
 
+      <div className='buttons'>
+        <button className='btn'>Voltar &lt;</button>
+        <button className='btn'>Próximo &gt;</button>
+      </div>
+
       <img src={pokedex} alt="Pokedex" className='pokedex'/>
     </div>
   );
