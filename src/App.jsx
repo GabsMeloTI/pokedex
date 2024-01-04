@@ -11,6 +11,10 @@ export default function App() {
         <span className='nome-pokemon'>Pikachu</span>
       </h1>
       
+      <form className='form'>
+        <input type="search" placeholder='nome ou número' className='input_pesquisa' id='input' required/>
+      </form>
+
       <img src={pokedex} alt="Pokedex" className='pokedex'/>
     </div>
   );
