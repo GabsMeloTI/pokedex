@@ -37,5 +37,12 @@ body {
     color: #aaa;
     top: 54.2%;
     right: 25%;
+    font-size: clamp(8px 5vw, 25px); //valor minimo, valor padrão, valor maximo
+
+    .nome-pokemon {
+      color: #3a444d;
+      text-transform: capitalize;  //deixa a primeira letra da palavra maiuscula
+      
+    }
   }
 }

@@ -7,8 +7,8 @@ export default function App() {
       <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/25.png" alt="pokemon" className='pokemon-img'/>
       
       <h1 className='dados-pokemon'>
-        <span className='numero-pokemon'>25</span> -
-        <span className='name-pokemon'>Pikachu</span>
+        <span className='numero-pokemon'>25 - </span>  
+        <span className='nome-pokemon'>Pikachu</span>
       </h1>
       
       <img src={pokedex} alt="Pokedex" className='pokedex'/>
