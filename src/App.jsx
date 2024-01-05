@@ -8,16 +8,16 @@ export default function App() {
   const [numero, setNumero] = useState('');
   const [imagem, setImagem] = useState('');
   const [pesquisa, setPesquisa] = useState('');
-  let numeroPokemon = 1;
+  const [numeroPokemon, setNumeroPokemon] = useState(1);
 
   const fetchPokemon = async(pokemon) => {
-      const APIResponse = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon}`);
-      if(APIResponse.status === 200) {
-        const dados = await APIResponse.json();
-        return dados;
-      }
+    const APIResponse = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon}`);
+    if(APIResponse.status === 200) {
+      const dados = await APIResponse.json();
+      return dados;
+    }
   }
-  
+
   const renderPokemon = async(pokemon) => {
     setNumero(0);
     setNome("Loading...");
@@ -27,8 +27,9 @@ export default function App() {
       setNome(dados.name);
       setNumero(dados.id);
       setImagem(dados['sprites']['versions']['generation-v']['black-white']['animated']['front_default']);
+      setNumeroPokemon(dados.id);
     } else {
-      setImagem()
+      setImagem(erro);
       setNumero("404");
       setNome("Não encontrado")
       setImagem(erro)
@@ -37,22 +38,21 @@ export default function App() {
 
   useEffect(() => {
     renderPokemon(numeroPokemon);
-  }, []);
+  }, [numeroPokemon]);
 
   const handleChange = (e) => {
     setPesquisa(e.target.value);
   }
 
   const handleClickMais = () => {
-    numeroPokemon += 1;
-    renderPokemon(numeroPokemon)
-  }
-  const handleClickMenos= () => {
-    numeroPokemon -= 1;
-    renderPokemon(numeroPokemon)
+      setNumeroPokemon(prevNumero => prevNumero + 1);
   }
 
-  
+  const handleClickMenos = () => {
+    if (numeroPokemon > 1) {
+      setNumeroPokemon(prevNumero => prevNumero - 1);
+    }
+  }
 
   return (
     <div className="container">
@@ -73,12 +73,10 @@ export default function App() {
 
       <div className='buttons'>
         <button className='btn' onClick={handleClickMenos}>Voltar &lt;</button>
-        <button className='btn'onClick={handleClickMais}>Próximo &gt;</button>
+        <button className='btn' onClick={handleClickMais}>Próximo &gt;</button>
       </div>
 
       <img src={pokedex} alt="Pokedex" className='pokedex'/>
     </div>
   );
 }
-
-
